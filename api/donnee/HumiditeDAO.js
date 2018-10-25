@@ -5,11 +5,11 @@ const NOM_CHAMP_ID = "id";
 const NOM_CHAMP_VALEUR = "valeur";
 const NOM_CHAMP_DATE = "date";
 
-exports.listerHumites = async function()
+    exports.listerHumites = async function()
 {
     // console.log('base de donnee ' + JSON.stringify(basededonnees));
     const SELECT_TOUTES_LES_HUMIDITES = 'select * from humidite';
-    return {rows} = await baseDeDonnees.query(SELECT_TOUTES_LES_HUMIDITES);
+    return await baseDeDonnees.query(SELECT_TOUTES_LES_HUMIDITES);
 
 //    let curseurListeHumidite = await baseDeDonnees.query('select * from humidite');
 

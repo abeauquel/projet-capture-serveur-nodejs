@@ -1,11 +1,11 @@
 'use strict';
+var controleurHumidite = require('../controleur/controleurHumidite');
+
 module.exports = function(app) {
-    var humiditeDAO = require('../donnee/HumiditeDAO');
 
     // humidite Routes
-    app.route('/humidites')
-        .get(humiditeDAO.listerHumites())
 
-    app.route('/humidite/:dd')
-        .post(humiditeDAO.insererHumidite())
+    app.get('/humidite' , (req, res) => {
+       return controleurHumidite.listerHumites(req, res);
+    });
 };

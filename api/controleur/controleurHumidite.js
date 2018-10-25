@@ -1,5 +1,4 @@
 var humiditeDAO = require('../donnee/HumiditeDAO');
-const controleurHumidite = {
 
     /**
      * Récupérer toutes les humidités
@@ -7,12 +6,12 @@ const controleurHumidite = {
      * @param {object} reponse
      * @returns {object} reflections array
      */
-    async listerHumites(requete, reponse) {
+    exports.listerHumites = async function(requete, reponse) {
         try {
             const { rows } = await humiditeDAO.listerHumites();
             return reponse.status(200).send({ rows });
         } catch(error) {
+            console.log(error)
             return reponse.status(400).send(error);
         }
-    },
-}
+    }
