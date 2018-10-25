@@ -7,8 +7,11 @@ const NOM_CHAMP_DATE = "date";
 
 exports.listerHumites = async function()
 {
-    // console.log('base de donnees ' + JSON.stringify(basededonnees));
-    let curseurListeHumidite = await baseDeDonnees.query('select * from humidite');
+    // console.log('base de donnee ' + JSON.stringify(basededonnees));
+    const SELECT_TOUTES_LES_HUMIDITES = 'select * from humidite';
+    return {rows} = await baseDeDonnees.query(SELECT_TOUTES_LES_HUMIDITES);
+
+//    let curseurListeHumidite = await baseDeDonnees.query('select * from humidite');
 
     let listeHumidites = {}; var position = 0;
     curseurListeHumidite.rows.forEach
@@ -20,6 +23,7 @@ exports.listerHumites = async function()
         }
     );
     return listeHumidites;
+
 }
 
 exports.insererHumidite = async function (humidite) {
