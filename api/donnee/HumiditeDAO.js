@@ -16,6 +16,11 @@ export const NOM_CHAMP_DATE = "date";
 
 exports.insererHumidite = async function (valeurHumidite, dateHumidite) {
     const INSERT_HUMIDITE = 'INSERT INTO '+NOM_TABLE+' ('+NOM_CHAMP_VALEUR+', '+NOM_CHAMP_DATE+') VALUES($1, $2) RETURNING *';
-    const values = [valeurHumidite, dateHumidite];
-    return baseDeDonnees.query(INSERT_HUMIDITE, values);
+    const parametres = [valeurHumidite, dateHumidite];
+    return baseDeDonnees.query(INSERT_HUMIDITE, parametres);
+}
+
+exports.suppressionHumidite = async function (idHumidite) {
+    const DELETE_HUMIDITE = 'DELETE FROM '+NOM_TABLE+ ' WHERE '+NOM_CHAMP_ID+'= $1 RETURNING *';
+    return baseDeDonnees.query(DELETE_HUMIDITE, [idHumidite]);
 }
