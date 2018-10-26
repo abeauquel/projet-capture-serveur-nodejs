@@ -18,10 +18,15 @@ var humiditeDAO = require('../donnee/HumiditeDAO');
 
     exports.insererHumidite = async function(requete, reponse) {
     try {
-        let valeurHumidite = requete.body[humiditeDAO.NOM_CHAMP_VALEUR];
-        let dateHumidite = requete.body[humiditeDAO.NOM_CHAMP_DATE];
+
+        //Pour le moment le json envoyé est un tableau d'une humidite
+        let valeurHumidite = requete.body[humiditeDAO.NOM_TABLE][0][humiditeDAO.NOM_CHAMP_VALEUR];
+        let dateHumidite = requete.body[humiditeDAO.NOM_TABLE][0][humiditeDAO.NOM_CHAMP_DATE];
+
         const { rows } = await humiditeDAO.insererHumidite(valeurHumidite, dateHumidite);
-        return reponse.status(200).send({ rows });
+
+        console.log("Inserton d'une humidite : " + "valeur : "+valeurHumidite + ", date : "+dateHumidite);
+        return reponse.status(200).send(valeurHumidite);
     } catch(error) {
         console.log(error);
         return reponse.status(400).send(error);
