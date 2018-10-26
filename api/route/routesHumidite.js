@@ -15,6 +15,11 @@ module.exports = function(app) {
         return controleurHumidite.insererHumidite(req, res);
     });
 
+    app.put('/humidite/:id' , (req, res) => {
+        console.log('Routage humidite : modification d une humidite');
+        return controleurHumidite.modificationHumidite(req, res);
+    });
+
     app.delete('/humidite/:id' , (req, res) => {
         console.log('Routage humidite : suppression d une humidite');
         return controleurHumidite.suppressionHumidite(req, res);
