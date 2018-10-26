@@ -2,7 +2,6 @@ require('babel-register')({
     presets: [ 'env' ]
 })
 import express from 'express';
-import dotenv from 'dotenv';
 import "@babel/polyfill";
 
 
@@ -22,4 +21,4 @@ let routesHumidites =require('./api/route/routesHumidite');
 routesHumidites(app);
 
 app.listen(8080)
-console.log('le serveur tourne sur le port ', 8080);
+console.log('Le serveur tourne sur le port ', 8080);
