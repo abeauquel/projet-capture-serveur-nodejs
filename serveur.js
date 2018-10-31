@@ -20,5 +20,5 @@ let routesHumidites =require('./api/route/routesHumidite');
 
 routesHumidites(app);
 
-app.listen(8080)
+app.listen(8080);
 console.log('Le serveur tourne sur le port ', 8080);
